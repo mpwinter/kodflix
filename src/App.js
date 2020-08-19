@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Technologies from './Technologies'
+import Details from './Details/Details';
+import NotFound from './NotFound';
+
 import './App.css';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <h1>Welcome to Kodflix!!!</h1>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+      <Route exact path='/' component={Technologies} />
+      <Route exact path='/not-found' component={NotFound} />
+      <Route path='/:technologyId' component={Details} />
+      </Switch>
     </div>
+    </Router>
   );
 }
+
+
 
 export default App;
